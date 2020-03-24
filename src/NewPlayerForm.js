@@ -1,12 +1,18 @@
 import React from 'react';
 import './App.css';
+import Dropdown from 'react-dropdown'
+
 
 const NewPlayerForm = props => {
+    console.log(props.teams)
+    let allTeams = props.teams.map(team => {
+        return <option value={team.TeamName}>{team.TeamName}</option>
+    })
     return (
         <div className="newplayerformcontainer">
-            <form onSubmit={props.handleSubmit} onChange={props.handleChange}>
-                NAME: <input type="text" name="newPlayerName" />
-                TEAM: <input type="text" name="newPlayerTeam" />
+            <form id="playersform" onSubmit={props.handleSubmit} onChange={props.handleChange}>
+                NAME: <input type="text" placeholder="Name" name="newPlayerName" />
+                TEAM: <select placeholder="Select a Team" name="newPlayerTeam"><option value=''>Select a Team</option>{allTeams}</select> 
                 NUMBER: <input type="number" name="newPlayerNumber" />
                 POSITION: <input type="text" name="newPlayerPosition" />
                 <input type="submit" />

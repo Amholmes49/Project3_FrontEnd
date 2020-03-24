@@ -4,7 +4,8 @@ import './App.css';
 import Players from './Players';
 import Player from './Player';
 import NewPlayerForm from './NewPlayerForm';
-
+import NewTeamForm from './NewTeamForm';
+import Dropdown from 'react-bootstrap/Dropdown'
 
 import axios from 'axios';
 import { Route, Link, Redirect, Switch, withRouter } from "react-router-dom";
@@ -28,7 +29,10 @@ class App extends React.Component {
       newTeamName: '',
       newTeamDivision:''
     }
+    this.handleTeamSubmit = this.handleTeamSubmit.bind(this);
   }
+
+  
 
   componentDidMount() {
     this.getPlayersAxios()
@@ -70,7 +74,23 @@ class App extends React.Component {
       }))
     })
   }
-
+  createTeamAxios() {
+    axios({
+      method: "POST",
+      url: backendTeamsUrl,
+      data: {
+        TeamName: this.state.newTeamName,
+        Division: this.state.newTeamDivision,
+        
+      }
+    })
+    .then(newTeam => {
+      console.log(newTeam)
+      this.setState(prevState => ({
+        teams: [...prevState.teams, newTeam.data]
+      }))
+    })
+  }
   deleteAxiosPlayer = event => {
     event.preventDefault()
     
@@ -86,6 +106,12 @@ class App extends React.Component {
   handleSubmit = event => {
     event.preventDefault()
     this.createPlayerAxios()
+    document.getElementById("playersform").reset();
+  }
+  handleTeamSubmit = event => {
+    event.preventDefault()
+    this.createTeamAxios() 
+    document.getElementById("teamsform").reset(); 
   }
 
   handleChange = (event) => {
@@ -93,15 +119,16 @@ class App extends React.Component {
       [event.target.name]: event.target.value
     })
   }
-
+  
   render() {
     console.log(this.state.players);
     console.log(this.state.teams);
     return (
       <div className="App">
         <nav>
-          <Link to="/">All Users</Link>
+          <Link to="/">Players</Link>
           <Link to="/new-player-form">New Player Form</Link>
+          <Link to="/new-team-form">New Team Form</Link>
         </nav>
         <Switch>
           <Route
@@ -111,6 +138,7 @@ class App extends React.Component {
               <Players
                 players={this.state.players}
                 handleDelete={this.deleteAxiosPlayer}
+                teams={this.state.teams}
               />
             )}
           />
@@ -124,7 +152,17 @@ class App extends React.Component {
               <NewPlayerForm
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
-              />
+                teams={this.state.teams}
+              />  
+            )}
+          />
+          <Route
+            path="/new-team-form"
+            render={() => (
+              <NewTeamForm
+                handleChange={this.handleChange}
+                handleTeamSubmit={this.handleTeamSubmit}
+              />  
             )}
           />
           <Route path="/*" render={() => <Redirect to="/Players" />} />
