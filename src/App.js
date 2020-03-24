@@ -3,7 +3,6 @@ import './App.css';
 
 import Players from './Players';
 import Player from './Player';
-import UserDetail from './UserDetail';
 import NewPlayerForm from './NewPlayerForm';
 
 
@@ -26,24 +25,26 @@ class App extends React.Component {
       newPlayerPosition: '',
       newPlayerTeam_id: '',
       teams: [],
+      newTeamName: '',
+      newTeamDivision:''
     }
   }
 
   componentDidMount() {
     this.getPlayersAxios()
-
+    this.getTeamsAxios()
   }
 
   getPlayersAxios() {
     axios({ method: "GET", url: backendPlayersUrl }).then(players => 
       this.setState({ players: players.data })
-      // const playersData = players.data
     );
   }
   getTeamsAxios() {
     axios({ method: "GET", url: backendTeamsUrl }).then(teams =>
       this.setState({ teams: teams.data })
     );
+
   }
   // getVenuesAxios() {
   //   axios({ method: "GET", url: backendVenuesUrl }).then(venues =>
