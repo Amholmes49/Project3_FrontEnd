@@ -3,9 +3,9 @@ import './App.css';
 
 import Players from './Players';
 import Player from './Player';
+import PlayerDetail from './PlayerDetail';
 import NewPlayerForm from './NewPlayerForm';
 import NewTeamForm from './NewTeamForm';
-import Dropdown from 'react-bootstrap/Dropdown'
 
 import axios from 'axios';
 import { Route, Link, Redirect, Switch, withRouter } from "react-router-dom";
@@ -65,6 +65,25 @@ class App extends React.Component {
         number: this.state.newPlayerNumber,
         position: this.state.newPlayerPosition,
         team_id: this.state.newPlayerTeam_id
+      }
+    })
+    .then(newPlayer => {
+      console.log(newPlayer)
+      this.setState(prevState => ({
+        players: [...prevState.players, newPlayer.data]
+      }))
+    })
+  }
+  updatePlayerAxios() {
+    axios({
+      method: "PUT",
+      url: backendPlayersUrl,
+      data: {
+        // name: this.state.newPlayerName,
+        team: this.state.newPlayerTeam,
+        // number: this.state.newPlayerNumber,
+        // position: this.state.newPlayerPosition,
+        // team_id: this.state.newPlayerTeam_id
       }
     })
     .then(newPlayer => {
@@ -142,10 +161,10 @@ class App extends React.Component {
               />
             )}
           />
-          {/* <Route
+          <Route
             path="/Players/:id"
-            render={routerProps => <UserDetail {...routerProps} users={this.state.users} />}
-          /> */}
+            render={routerProps => <PlayerDetail {...routerProps} players={this.state.players} />}
+          />
           <Route
             path="/new-player-form"
             render={() => (
