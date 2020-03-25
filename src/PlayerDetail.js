@@ -21,17 +21,12 @@ const PlayerDetail = props => {
     // })
     return (
         <div className="updateplayerteamcontainer">
-            <div>{currentPlayer[0].name}</div>
-            
-            {/* <form    onChange={props.handleChange}> */}
+            <div> NAME: {currentPlayer[0].name}</div> 
             TEAM: <select id={props.players[0]._id} onChange={props.handleUpdate} name="newPlayerTeam"><option value=''>{currentPlayer[0].team}</option>{allTeams}</select> 
+            <div> NUMBER: {currentPlayer[0].number}</div> 
+            <div> POSITION: {currentPlayer[0].position}</div> 
             
-            {/* <input type='submit' value='update'/>
-            </form> */}
-            {/* <form id="playersform" onSubmit={props.handleSubmit} onChange={props.handleChange}>
-                TEAM: <select placeholder="Select a Team" name="newPlayerTeam"><option value=''>Select a Team</option>{allTeams}</select> 
-                <input type="submit" />
-            </form> */}
+            
         </div>
     );
 }
