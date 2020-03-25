@@ -11,10 +11,7 @@ const Players = props => {
     return (
         <div>
             {allPlayers}
-            {/* <Route
-            path="/Players/:id"
-            render={routerProps => <PlayerDetail {...routerProps} players={this.state.players} />}
-          /> */}
+            
         </div>
     )
 }

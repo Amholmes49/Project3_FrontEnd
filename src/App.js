@@ -30,6 +30,8 @@ class App extends React.Component {
       newTeamDivision:''
     }
     this.handleTeamSubmit = this.handleTeamSubmit.bind(this);
+    // this.handleTeamUpdate = this.handleTeamUpdate.bind(this);
+    
   }
 
   
@@ -74,22 +76,25 @@ class App extends React.Component {
       }))
     })
   }
-  updatePlayerAxios() {
+  updatePlayerTeamAxios = event => {
+    console.log(event.target.id)
+    console.log(event.target.value)
+    event.preventDefault()
     axios({
       method: "PUT",
-      url: backendPlayersUrl,
+      url: `${backendPlayersUrl}${event.target.id}`,
       data: {
         // name: this.state.newPlayerName,
-        team: this.state.newPlayerTeam,
+        team: event.target.value
         // number: this.state.newPlayerNumber,
         // position: this.state.newPlayerPosition,
         // team_id: this.state.newPlayerTeam_id
       }
     })
-    .then(newPlayer => {
-      console.log(newPlayer)
+    .then(updatedTeam => {
+      console.log(updatedTeam)
       this.setState(prevState => ({
-        players: [...prevState.players, newPlayer.data]
+        teams: [...prevState.teams, updatedTeam.data]
       }))
     })
   }
@@ -112,7 +117,7 @@ class App extends React.Component {
   }
   deleteAxiosPlayer = event => {
     event.preventDefault()
-    
+    console.log(event.target.id)
     axios({
       method: "DELETE",
       url: `${backendPlayersUrl}${event.target.id}`
@@ -132,16 +137,22 @@ class App extends React.Component {
     this.createTeamAxios() 
     document.getElementById("teamsform").reset(); 
   }
+  // handleTeamUpdate = event => {
+  //   event.preventDefault()
+  //   this.updatePlayerTeamAxios() 
+    
+  // }
 
   handleChange = (event) => {
     this.setState({ 
       [event.target.name]: event.target.value
     })
   }
-  
+
   render() {
-    console.log(this.state.players);
+    console.log(this.state);
     console.log(this.state.teams);
+    
     return (
       <div className="App">
         <nav>
@@ -163,7 +174,11 @@ class App extends React.Component {
           />
           <Route
             path="/Players/:id"
-            render={routerProps => <PlayerDetail {...routerProps} players={this.state.players} />}
+            render={routerProps => <PlayerDetail {...routerProps} 
+            handleUpdate={this.updatePlayerTeamAxios}
+            players={this.state.players} 
+            teams={this.state.teams}
+            handleChange={this.handleChange}/>}
           />
           <Route
             path="/new-player-form"
