@@ -1,0 +1,13 @@
+.newteamformcontainer {
+    display: flex;
+    background-color: burlywood;
+    justify-content: center;
+    padding: 10px;
+}
+#teamsform {
+    display: flex;
+    flex-direction: column;
+}
+.teaminputfield {
+    padding: 10px;
+}

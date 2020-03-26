@@ -1,46 +1,51 @@
-.App {
+header {
+  background-color: blue;
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 5px;
+}
+.headerLinks {
+  color: white;
+  padding: 25px;
+}
+.playersContainer {
+  background-color: cadetblue;
+  display: flex;
+  justify-content: center;
+}
+.playerList {
+  background-color: chartreuse;
+  text-align: center;
+  
+}
+#playerListText {
+  text-decoration: underline;
+}
+.player {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(135, 135, 189);
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button {
+  border-radius: 6px;
+  background-color: darkorange;
+  color: black;
+  padding: 10px;
+}
+.formsubmit {
+  border-radius: 6px;
+  background-color: darkorange;
+  color: black;
+  padding: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.formsubmitcontainer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-.newplayerformcontainer {
-  display: flex;
-  flex-direction: column;
-}
-body {
-  display: grid;
-  
+.inputfield {
+  border-radius: 6px;
 }

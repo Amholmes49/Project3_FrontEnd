@@ -155,11 +155,13 @@ class App extends React.Component {
     
     return (
       <div className="App">
+        <header>
         <nav>
-          <Link to="/">Players</Link>
-          <Link to="/new-player-form">New Player Form</Link>
-          <Link to="/new-team-form">New Team Form</Link>
+          <Link to="/" className="headerLinks">Players</Link>
+          <Link to="/new-player-form" className="headerLinks">New Player Form</Link>
+          <Link to="/new-team-form" className="headerLinks">New Team Form</Link>
         </nav>
+        </header>
         <Switch>
           <Route
             exact

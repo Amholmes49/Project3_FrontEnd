@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './NewPlayerForm.css';
 
 
 const NewPlayerForm = props => {
@@ -10,11 +11,11 @@ const NewPlayerForm = props => {
     return (
         <div className="newplayerformcontainer">
             <form id="playersform" onSubmit={props.handleSubmit} onChange={props.handleChange}>
-                NAME: <input type="text" placeholder="Name" name="newPlayerName" />
-                TEAM: <select placeholder="Select a Team" name="newPlayerTeam"><option value=''>Select a Team</option>{allTeams}</select> 
-                NUMBER: <input type="number" name="newPlayerNumber" />
-                POSITION: <input type="text" name="newPlayerPosition" />
-                <input type="submit" />
+                <div className="playerinputfield">NAME: <input className="inputfield" type="text" placeholder="Name" name="newPlayerName" /></div>
+                <div className="playerinputfield">TEAM: <select className="inputfield" placeholder="Select a Team" name="newPlayerTeam"><option value=''>Select a Team</option>{allTeams}</select></div> 
+                <div className="playerinputfield">NUMBER: <input className="inputfield" type="number" placeholder="Number" name="newPlayerNumber" /></div>
+                <div className="playerinputfield">POSITION: <input className="inputfield" type="text" placeholder="Position" name="newPlayerPosition" /></div>
+                <div className="playerinputfield formsubmitcontainer"><input className="formsubmit" type="submit" /></div>
             </form>
         </div>
     );

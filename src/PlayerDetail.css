@@ -1,0 +1,13 @@
+.newplayerformcontainer {
+    display: flex;
+    background-color: burlywood;
+    justify-content: center;
+    padding: 10px;
+}
+#playersform {
+    display: flex;
+    flex-direction: column;
+}
+.playerinputfield {
+    padding: 10px;
+}

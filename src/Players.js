@@ -9,9 +9,11 @@ const Players = props => {
     })
 
     return (
-        <div>
+        <div className="playersContainer">
+            <div className="playerList">
+                <div id="playerListText">Player List</div>
             {allPlayers}
-            
+            </div> 
         </div>
     )
 }
