@@ -13,6 +13,9 @@ const Players = props => {
             <div className="playerList">
                 <div id="playerListText">Player List</div>
             {allPlayers}
+            <section className='padding'>
+                
+            </section>
             </div> 
         </div>
     )

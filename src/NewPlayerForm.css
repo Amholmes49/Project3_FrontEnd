@@ -3,6 +3,7 @@
     background-color: burlywood;
     justify-content: center;
     padding: 10px;
+    min-height: 100vh;
 }
 #playersform {
     display: flex;
