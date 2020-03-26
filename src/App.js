@@ -9,10 +9,9 @@ import NewTeamForm from './NewTeamForm';
 
 import axios from 'axios';
 import { Route, Link, Redirect, Switch, withRouter } from "react-router-dom";
+let backendUrl = process.env.REACT_APP_BACKEND_APP_URL || "http://localhost:8080/";
 
-const backendPlayersUrl = "http://localhost:8080/api/Players/";
-const backendTeamsUrl = "http://localhost:8080/api/Teams/";
-const backendVenuesUrl = "http://localhost:8080/api/Venues/";
+
 
 class App extends React.Component {
   constructor(props) {
@@ -42,12 +41,12 @@ class App extends React.Component {
   }
 
   getPlayersAxios() {
-    axios({ method: "GET", url: backendPlayersUrl }).then(players => 
+    axios({ method: "GET", url: `${backendUrl}api/Players/` }).then(players => 
       this.setState({ players: players.data })
     );
   }
   getTeamsAxios() {
-    axios({ method: "GET", url: backendTeamsUrl }).then(teams =>
+    axios({ method: "GET", url: `${backendUrl}api/Teams/` }).then(teams =>
       this.setState({ teams: teams.data })
     );
 
@@ -60,7 +59,7 @@ class App extends React.Component {
   createPlayerAxios() {
     axios({
       method: "POST",
-      url: backendPlayersUrl,
+      url: `${backendUrl}api/Players/`,
       data: {
         name: this.state.newPlayerName,
         team: this.state.newPlayerTeam,
@@ -82,7 +81,7 @@ class App extends React.Component {
     event.preventDefault()
     axios({
       method: "PUT",
-      url: `${backendPlayersUrl}${event.target.id}`,
+      url: `${backendUrl}api/Teams/${event.target.id}`,
       data: {
         // name: this.state.newPlayerName,
         team: event.target.value
@@ -101,7 +100,7 @@ class App extends React.Component {
   createTeamAxios() {
     axios({
       method: "POST",
-      url: backendTeamsUrl,
+      url: `${backendUrl}api/Teams/`,
       data: {
         TeamName: this.state.newTeamName,
         Division: this.state.newTeamDivision,
@@ -120,7 +119,7 @@ class App extends React.Component {
     console.log(event.target.id)
     axios({
       method: "DELETE",
-      url: `${backendPlayersUrl}${event.target.id}`
+      url: `${backendUrl}api/Players/${event.target.id}`
     })
     .then(deletedPlayer => {
       this.getPlayersAxios();
