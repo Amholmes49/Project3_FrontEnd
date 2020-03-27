@@ -15,11 +15,8 @@ const PlayerDetail = props => {
     const allTeams = props.teams.map(team => {
         return <option value={team.TeamName}>{team.TeamName}</option>
     })
-    console.log(props.teams)
-    console.log(props.players[0]._id)
-    // let allTeams = props.teams.map(team => {
-    //     return <option value={team.TeamName}>{team.TeamName}</option>
-    // })
+    
+    
     return (
         <div className="updateplayerteamcontainer">
             <div className='playerteamupdate'>

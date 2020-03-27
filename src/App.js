@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 import Players from './Players';
-import Player from './Player';
+
 import PlayerDetail from './PlayerDetail';
 import NewPlayerForm from './NewPlayerForm';
 import NewTeamForm from './NewTeamForm';
@@ -10,8 +10,8 @@ import NewTeamForm from './NewTeamForm';
 import axios from 'axios';
 import { Route, Link, Redirect, Switch, withRouter } from "react-router-dom";
 let backendUrl = process.env.REACT_APP_BACKEND_APP_URL || "http://localhost:8080/";
-let backendTeamUrl = "http://localhost:8080/api/Teams/";
-//testchange
+
+
 
 class App extends React.Component {
   constructor(props) {
@@ -30,7 +30,6 @@ class App extends React.Component {
       isFlushed: false
     }
     this.handleTeamSubmit = this.handleTeamSubmit.bind(this);
-    // this.handleTeamUpdate = this.handleTeamUpdate.bind(this);
     
   }
 
@@ -52,11 +51,7 @@ class App extends React.Component {
     );
 
   }
-  // getVenuesAxios() {
-  //   axios({ method: "GET", url: backendVenuesUrl }).then(venues =>
-  //     this.setState({ venues: venues.data })
-  //   );
-  // }
+  
   createPlayerAxios() {
     axios({
       method: "POST",
@@ -84,11 +79,9 @@ class App extends React.Component {
       method: "PUT",
       url: `${backendUrl}api/Players/${event.target.id}`,
       data: {
-        // name: this.state.newPlayerName,
+       
         team: event.target.value
-        // number: this.state.newPlayerNumber,
-        // position: this.state.newPlayerPosition,
-        // team_id: this.state.newPlayerTeam_id
+        
       }
     })
     .then(updatedTeam => {
@@ -102,9 +95,7 @@ class App extends React.Component {
       })
       
       this.setState({players: updatePlayer})
-      // this.setState(prevState => ({
-      //   players: [...prevState.players, updatedTeam.data]
-      // }))
+      
     })
   }
   createTeamAxios() {
@@ -148,11 +139,7 @@ class App extends React.Component {
     this.createTeamAxios() 
     document.getElementById("teamsform").reset(); 
   }
-  // handleTeamUpdate = event => {
-  //   event.preventDefault()
-  //   this.updatePlayerTeamAxios() 
-    
-  // }
+  
 
   handleChange = (event) => {
     this.setState({ 
