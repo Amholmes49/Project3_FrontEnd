@@ -9,13 +9,13 @@ header {
   padding: 25px;
 }
 .playersContainer {
-  background-color: cadetblue;
+  background-color: burlywood;
   display: flex;
   justify-content: center;
   min-height: 100vh;
 }
 .playerList {
-  background-color: chartreuse;
+  
   text-align: center;
   
 }
@@ -26,7 +26,7 @@ header {
   justify-content: center;
   display: flex;
   flex-direction: column;
-  background-color: rgb(135, 135, 189);
+  
   text-align: center;
 }
 button {

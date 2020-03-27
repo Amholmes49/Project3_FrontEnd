@@ -1,12 +1,14 @@
-.newplayerformcontainer {
+.updateplayerteamcontainer {
     display: flex;
     background-color: burlywood;
     justify-content: center;
     padding: 10px;
+    min-height: 100vh;
 }
-#playersform {
+.playerteamupdate {
     display: flex;
     flex-direction: column;
+    
 }
 .playerinputfield {
     padding: 10px;
