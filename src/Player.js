@@ -7,6 +7,7 @@ const Player = props => {
     return (
     <div className="player">
         <p><Link to={`/Players/${props.player._id}`}>{props.player.name}</Link></p>
+        <div>{props.player.team}</div>
         <button id={props.player._id} onClick={props.handleDelete}>Delete {props.player.name}</button>
         <section className='padding'>
                 

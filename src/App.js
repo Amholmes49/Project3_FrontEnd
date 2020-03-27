@@ -26,7 +26,8 @@ class App extends React.Component {
       newPlayerTeam_id: '',
       teams: [],
       newTeamName: '',
-      newTeamDivision:''
+      newTeamDivision:'',
+      isFlushed: false
     }
     this.handleTeamSubmit = this.handleTeamSubmit.bind(this);
     // this.handleTeamUpdate = this.handleTeamUpdate.bind(this);
@@ -104,7 +105,6 @@ class App extends React.Component {
       data: {
         TeamName: this.state.newTeamName,
         Division: this.state.newTeamDivision,
-        
       }
     })
     .then(newTeam => {
@@ -113,6 +113,9 @@ class App extends React.Component {
         teams: [...prevState.teams, newTeam.data]
       }))
     })
+    .then(updatePlayer => {
+      window.location.reload();
+    });
   }
   deleteAxiosPlayer = event => {
     event.preventDefault()
