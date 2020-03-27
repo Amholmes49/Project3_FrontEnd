@@ -15,7 +15,7 @@ const PlayerDetail = props => {
     const allTeams = props.teams.map(team => {
         return <option value={team.TeamName}>{team.TeamName}</option>
     })
-    console.log(currentPlayer)
+    console.log(props.teams)
     console.log(props.players[0]._id)
     // let allTeams = props.teams.map(team => {
     //     return <option value={team.TeamName}>{team.TeamName}</option>
@@ -23,7 +23,7 @@ const PlayerDetail = props => {
     return (
         <div className="updateplayerteamcontainer">
             <div> NAME: {currentPlayer[0].name}</div> 
-            TEAM: <select id={props.players[0]._id} onChange={props.handleUpdate} name="newPlayerTeam"><option value=''>{currentPlayer[0].team}</option>{allTeams}</select> 
+            TEAM: <select id={currentPlayer[0]._id} onChange={props.handleUpdate} name="newPlayerTeam"><option value=''>{currentPlayer[0].team}</option>{allTeams}</select> 
             <div> NUMBER: {currentPlayer[0].number}</div> 
             <div> POSITION: {currentPlayer[0].position}</div> 
             

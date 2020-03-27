@@ -10,7 +10,7 @@ import NewTeamForm from './NewTeamForm';
 import axios from 'axios';
 import { Route, Link, Redirect, Switch, withRouter } from "react-router-dom";
 let backendUrl = process.env.REACT_APP_BACKEND_APP_URL || "http://localhost:8080/";
-
+let backendTeamUrl = "http://localhost:8080/api/Teams/";
 //testchange
 
 class App extends React.Component {
@@ -81,7 +81,7 @@ class App extends React.Component {
     event.preventDefault()
     axios({
       method: "PUT",
-      url: `${backendUrl}api/Teams/${event.target.id}`,
+      url: `${backendUrl}api/Players/${event.target.id}`,
       data: {
         // name: this.state.newPlayerName,
         team: event.target.value
@@ -149,8 +149,8 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state);
-    console.log(this.state.teams);
+    // console.log(this.state);
+    // console.log(this.state.teams);
     
     return (
       <div className="App">
