@@ -92,10 +92,19 @@ class App extends React.Component {
       }
     })
     .then(updatedTeam => {
-      console.log(updatedTeam)
-      this.setState(prevState => ({
-        teams: [...prevState.teams, updatedTeam.data]
-      }))
+      let players = this.state.players
+      console.log(players, updatedTeam)
+      let updatePlayer = players.map(player => { 
+        if(updatedTeam.data._id == player._id){
+          player.team = updatedTeam.data.team
+        }
+        return player
+      })
+      
+      this.setState({players: updatePlayer})
+      // this.setState(prevState => ({
+      //   players: [...prevState.players, updatedTeam.data]
+      // }))
     })
   }
   createTeamAxios() {
@@ -153,7 +162,7 @@ class App extends React.Component {
 
   render() {
     // console.log(this.state);
-    // console.log(this.state.teams);
+   console.log(this.state.players);
     
     return (
       <div className="App">
